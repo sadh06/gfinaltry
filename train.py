@@ -12,7 +12,7 @@ input_path = os.getenv('VH_INPUTS_DIR', '.inputs/')
 #mnist_file_path = os.path.join(input_path, 'my-mnist-dataset/mnist.npz')
 
 #preprocessed_mnist_file_path = os.path.join(input_path, 'my-processed-mnist-dataset/preprocessed_mnist.npz')
-preprocessed_mnist_file_path = 'https://github.com/sadh06/gfinaltry/blob/main/preprocessed_mnist.npz'
+preprocessed_mnist_file_path = '/Users/Dell Laptop/test-mnist-master/preprocessed_mnist.npz'
 
 # A function to write JSON to our output logs
 # with the epoch number with the loss and accuracy from each run.
