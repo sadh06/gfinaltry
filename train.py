@@ -12,8 +12,19 @@ input_path = os.getenv('VH_INPUTS_DIR', '.inputs/')
 #mnist_file_path = os.path.join(input_path, 'my-mnist-dataset/mnist.npz')
 
 #preprocessed_mnist_file_path = os.path.join(input_path, 'my-processed-mnist-dataset/preprocessed_mnist.npz')
-preprocessed_mnist_file_path = '/Users/Dell Laptop/test-mnist-master/preprocessed_mnist.npz'
+#preprocessed_mnist_file_path = '/Users/Dell Laptop/test-mnist-master/preprocessed_mnist.npz'
 
+valohai.prepare(
+        step='train-model',
+        image='tensorflow/tensorflow:2.6.0',
+        default_inputs={
+            'dataset': 'https://github.com/sadh06/gfinaltry/blob/main/preprocessed_mnist.npz',
+        },
+        default_parameters={
+            'learning_rate': 0.001,
+            'epochs': 5,
+        },
+    )
 # A function to write JSON to our output logs
 # with the epoch number with the loss and accuracy from each run.
 def logMetadata(epoch, logs):
@@ -30,7 +41,7 @@ metadataCallback = tf.keras.callbacks.LambdaCallback(on_epoch_end=logMetadata)
 # mnist = tf.keras.datasets.mnist
 # (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-with numpy.load(preprocessed_mnist_file_path, allow_pickle=True) as f:
+with numpy.load('dataset', allow_pickle=True) as f:
     x_train, y_train = f['x_train'], f['y_train']
     x_test, y_test = f['x_test'], f['y_test']
 
